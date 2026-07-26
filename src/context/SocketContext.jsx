@@ -34,7 +34,6 @@ export function SocketProvider({ children }) {
     return () => {
       window.removeEventListener("partner-login", handleUpdate);
       window.removeEventListener("partner-logout", handleUpdate);
-      socket.disconnect();
     };
   }, []);
 
