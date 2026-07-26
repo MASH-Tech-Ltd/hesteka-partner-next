@@ -1,5 +1,6 @@
 "use client";
 
+import api from "../../utils/api";
 import { useLang } from "../../context/LanguageContext";
 import { useEffect, useState, useCallback, useRef } from "react";
 import {
@@ -13,7 +14,7 @@ const mapContainerStyle = {
   height: "100%",
 };
 
-const libraries = ['places'];
+const libraries = [];
 
 // Helper to generate a custom map pin with a partner image inside
 const generatePinIcon = (imgUrl) => {
@@ -92,6 +93,13 @@ export default function MapCard({ data }) {
     googleMapsApiKey: (process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "") || "",
     libraries,
   });
+
+  // Track map loads for analytics
+  useEffect(() => {
+    if (isLoaded) {
+      api.post("/location/track", { type: "map_load", provider: "client", source: "partner_dashboard" }).catch(() => {});
+    }
+  }, [isLoaded]);
 
   // Helper to extract coordinates safely
   const getCoordinates = (p) => {

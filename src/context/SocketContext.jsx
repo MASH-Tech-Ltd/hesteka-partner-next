@@ -10,10 +10,17 @@ export const SocketContext = createContext(socket);
 
 export function SocketProvider({ children }) {
   useEffect(() => {
+    // Add debugging listeners
+    socket.on("connect", () => console.log("✅ Partner Socket Connected! ID:", socket.id));
+    socket.on("connect_error", (err) => console.error("❌ Partner Socket Connection Error:", err.message));
+    socket.on("disconnect", (reason) => console.log("⚠️ Partner Socket Disconnected. Reason:", reason));
+
     const token = getStorageItem("partnerAccessToken");
     if (token) {
       socket.auth = { token };
       socket.connect();
+    } else {
+      console.log("No partner token found, socket will not connect.");
     }
 
     const handleUpdate = () => {

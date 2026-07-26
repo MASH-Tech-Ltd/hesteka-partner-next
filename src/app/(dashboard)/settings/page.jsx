@@ -28,7 +28,7 @@ const mapContainerStyle = {
   height: "100%",
 };
 
-const libraries = ["places"];
+const libraries = [];
 
 // Helper to generate a custom map pin with a partner image inside
 const generatePinIcon = (imgUrl) => {

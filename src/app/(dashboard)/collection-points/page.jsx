@@ -31,7 +31,7 @@ const mapContainerStyle = {
   height: "300px",
 };
 
-const libraries = ["places"];
+const libraries = [];
 
 // Helper to generate a custom map pin with an image inside
 const generatePinIcon = (imgUrl) => {

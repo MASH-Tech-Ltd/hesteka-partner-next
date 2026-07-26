@@ -60,6 +60,11 @@ export default function PartnerLoginPage() {
         setStorageItem("partnerUser", JSON.stringify(userData));
         setStorageItem("partnerAccessToken", userData.accessToken);
         setStorageItem("partnerRefreshToken", userData.refreshToken);
+        
+        // Trigger socket connection
+        if (typeof window !== "undefined") {
+          window.dispatchEvent(new Event("partner-login"));
+        }
 
         try {
           const fcmToken = await requestForToken();
