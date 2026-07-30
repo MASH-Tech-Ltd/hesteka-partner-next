@@ -339,6 +339,7 @@ const LocationPicker = ({ lat, lng, onChange }) => {
                 },
                 mapTypeControl: false,
                 scrollwheel: true,
+                clickableIcons: false,
               }}
             >
               {position && <MarkerF position={position} icon={markerIcon} />}

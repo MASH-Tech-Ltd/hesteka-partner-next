@@ -1041,6 +1041,7 @@ export default function SettingsPage() {
                           streetViewControl: false,
                           fullscreenControl: false,
                           scrollwheel: true,
+                          clickableIcons: false,
                           gestureHandling: "greedy",
                         }}
                       >

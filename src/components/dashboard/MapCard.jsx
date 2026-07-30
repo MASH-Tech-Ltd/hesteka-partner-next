@@ -255,6 +255,7 @@ export default function MapCard({ data }) {
             },
             mapTypeControl: false,
             scrollwheel: false,
+            clickableIcons: false,
           }}
         >
           {validPoints.map((p, idx) => {

@@ -501,6 +501,7 @@ export default function CollectionPointsPage() {
                 gestureHandling: "greedy",
                 streetViewControl: false,
                 fullscreenControl: false,
+                clickableIcons: false,
               }}
               onLoad={onLoad}
               onUnmount={onUnmount}
