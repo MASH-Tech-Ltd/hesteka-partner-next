@@ -23,6 +23,8 @@ async function proxyRequest(req, { params }) {
       }
     }
 
+    const clientIp = req.headers.get("x-forwarded-for") || req.ip || "127.0.0.1";
+    
     // Construct headers for backend request
     const headers = {
       "Content-Type": req.headers.get("content-type") || "application/json",
@@ -30,6 +32,7 @@ async function proxyRequest(req, { params }) {
       "X-Partner-Dashboard": "true",
       "X-Requested-From": "web/partner",
       "origin": "https://partner.hesteka.com",
+      "X-Forwarded-For": clientIp,
     };
 
     const authHeader = req.headers.get("authorization");
