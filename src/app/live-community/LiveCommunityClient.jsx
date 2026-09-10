@@ -31,7 +31,7 @@ export default function LiveCommunityClient() {
     const fetchCount = async () => {
       try {
         const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/v1/user/community/live-count`,
+          `${process.env.NEXT_PUBLIC_SOCKET_URL || "http://localhost:5000"}/api/v1/user/community/live-count`,
         );
         if (res.data && res.data.status === "ok") {
           setData(res.data.data);
@@ -51,7 +51,7 @@ export default function LiveCommunityClient() {
 
     // Socket setup
     const socket = io(
-      process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000",
+      process.env.NEXT_PUBLIC_SOCKET_URL || "http://localhost:5000",
       {
         withCredentials: true,
         transports: ["websocket", "polling"],
