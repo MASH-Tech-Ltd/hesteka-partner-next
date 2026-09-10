@@ -6,12 +6,15 @@ import { ToastContainer } from "react-toastify";
 export const metadata = {
   title: "HESTEKA - Partner Dashboard",
   description: "Secure partner management portal for HESTEKA organization partners.",
+  icons: {
+    icon: "/barIcon.png",
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="bg-[#fcfaf7] text-[#3a2a1a] antialiased">
+      <body className="bg-[#fcfaf7] text-[#3a2a1a] antialiased" suppressHydrationWarning>
         <LanguageProvider>
           <ApiCacheProvider>
             {children}
